@@ -10,10 +10,10 @@ class BusinessList extends React.Component
     return (
       <div className="BusinessList">
       {
-        this.props.businesses.map(function hi(business)
-      {
-        return <Business newProp={business} />
-      })
+      this.props.businesses.map(business => {
+            return <Business newProp={business} />
+          })
+        }
       }
       </div>
 
