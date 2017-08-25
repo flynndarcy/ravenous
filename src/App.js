@@ -3,9 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 import SearchBar from './components/SearchBar/SearchBar';
+import { Yelp } from './components/util/Yelp';
 
 
-let business = {
+/*let business = {
 
 
   imageSrc: 'https://s3.amazonaws.com/codecademy-content/programs/react/ravenous/pizza.jpg',
@@ -31,11 +32,24 @@ const businesses = [
 
 ];
 
+*/
+
 class App extends Component {
+
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+  businesses: []
+};
+this.searchYelp.bind(this);
+  }
 
   searchYelp(term, location, sortBy)
   {
-    console.log("Searching Yelp With ->" +term+", "+location+", "+sortBy)
+    Yelp.search(term, location, sortBy).then(businesses => (
+      businesses.setState({businesses: businesses})
+    ));
   }
 
 
@@ -45,7 +59,7 @@ class App extends Component {
       <div className="App">
   <h1>Flynns Creations</h1>
   <SearchBar search={this.searchYelp}/>
-    <BusinessList businesses={businesses} />
+    <BusinessList businesses={this.businesses} />
 </div>
     );
   }
