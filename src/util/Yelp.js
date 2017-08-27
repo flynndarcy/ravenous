@@ -14,24 +14,23 @@ export const Yelp = {
 
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}`, {method: 'POST'}).then(response => {
   return response.json();
-}).then(cback => cback(jsonResponse){
+}).then(jsonResponse => {
+
   access_token = jsonResponse.access_token;
 });
 
   },
 
 
-  search(term, location, sortBy)
-  {
+  search(term, location, sortBy) {
 
-    return yelp.getAccessToken().then(responso => responso()
-  {
-    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {headers: {Authorization: `Bearer ${accessToken}`}}).then(response => {
+    return yelp.getAccessToken().then(response => {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {headers: {Authorization: `Bearer ${accessToken}`}}).then(jsonResponse => {
   return response.json();
-}).then(cback => cback(jsonResponse){
-  if(jsonResponse.businesses){
+}).then(businesses => {
+  if(jsonResponse.businesses) {
 
-    return jsonResponse.businesses.map(business => (
+    return jsonResponse.businesses.map(business => {
       return {
         id: business.id,
         imageSrc: business.imageSrc,
@@ -43,13 +42,10 @@ export const Yelp = {
         category: businesses.category,
         rating: business.rating,
         reviewCount: business.reviewCount
-      }
-    ));
+      }});
 
-  }
-});
+  };
 
-};
-
-
-export default Yelp;
+})
+}
+}

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import BusinessList from './components/BusinessList/BusinessList';
 import SearchBar from './components/SearchBar/SearchBar';
-import { Yelp } from './components/util/Yelp';
+import { Yelp } from './util/Yelp';
 
 
 /*let business = {
