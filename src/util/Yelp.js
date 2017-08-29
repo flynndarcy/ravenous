@@ -3,7 +3,7 @@ const secret = '8k7O9lJ0pfliwCvPoo9SGQscHbsEqwTYysnq6fKpfu9cdEn1FSVLGSXDlosraz45
 
 let accessToken = '';
 
-export let Yelp = {
+let Yelp = {
 
   getAccessToken()
   {
@@ -62,3 +62,5 @@ export let Yelp = {
 
 
 }
+
+export { Yelp } ;
