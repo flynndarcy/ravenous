@@ -42,13 +42,15 @@ class App extends Component {
     this.state = {
   businesses: []
 };
-this.searchYelp.bind(this);
+
+this.searchYelp = this.searchYelp.bind(this);
+
   }
 
   searchYelp(term, location, sortBy)
   {
     Yelp.search(term, location, sortBy).then(businesses => (
-      businesses.setState({businesses: businesses})
+      this.setState({businesses: businesses})
     ));
   }
 
@@ -59,7 +61,7 @@ this.searchYelp.bind(this);
       <div className="App">
   <h1>Flynns Creations</h1>
   <SearchBar search={this.searchYelp}/>
-    <BusinessList business={this.businesses} />
+    <BusinessList business={this.state.businesses} />
 </div>
     );
   }
