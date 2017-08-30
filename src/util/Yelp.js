@@ -37,10 +37,10 @@ let Yelp = {
 ).then(response => {
   return response.json();
 }).then(jsonResponse => {
-  if(this.jsonResponse.businesses) {
+  if(jsonResponse.businesses) {
 
     return jsonResponse.businesses.map(business => {
-      return {
+    return  {
         id: business.id,
         imageSrc: business.imageSrc,
         name: business.name,
