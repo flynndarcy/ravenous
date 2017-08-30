@@ -1,22 +1,22 @@
 const clientId = 'luKfditnFxjs-XJpjNwCWQ';
 const secret = '8k7O9lJ0pfliwCvPoo9SGQscHbsEqwTYysnq6fKpfu9cdEn1FSVLGSXDlosraz45';
 
-let acessToken;
+let accessToken;
 
 let Yelp = {
 
   getAccessToken()
   {
-    if(acessToken)
+    if(accessToken)
     {
-      return new Promise(resolve => resolve(acessToken));
+      return new Promise(resolve => resolve(accessToken));
     }
 
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/oauth2/token?grant_type=client_credentials&client_id=${clientId}&client_secret=${secret}`, {method: 'POST'}).then(response => {
   return response.json();
 }).then(jsonResponse => {
 
-  access_token = jsonResponse.access_token;
+  accessToken = jsonResponse.accessToken;
 });
 
   },
