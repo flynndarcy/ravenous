@@ -60,7 +60,7 @@ this.searchYelp = this.searchYelp.bind(this);
     return (
       <div className="App">
   <h1>Flynns Creations</h1>
-  <SearchBar search={this.searchYelp}/>
+  <SearchBar searchYelp={this.searchYelp}/>
     <BusinessList business={this.state.businesses} />
 </div>
     );

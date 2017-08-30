@@ -34,12 +34,12 @@ let Yelp = {
       }
     );
   }
-  ).then(response => {
+).then(response => {
   return response.json();
-}).then(businesses => {
+}).then(jsonResponse => {
   if(this.jsonResponse.businesses) {
 
-    return this.jsonResponse.businesses.map(business => {
+    return jsonResponse.businesses.map(business => {
       return {
         id: business.id,
         imageSrc: business.imageSrc,
@@ -48,7 +48,7 @@ let Yelp = {
         city: business.city,
         state: business.state,
         zipCode: business.zipCode,
-        category: businesses.category,
+        category: business.category,
         rating: business.rating,
         reviewCount: business.reviewCount
       };
