@@ -51,7 +51,7 @@ let Yelp = {
         category: business.category,
         rating: business.rating,
         reviewCount: business.reviewCount
-      }));
+      });
     }
   });
 
