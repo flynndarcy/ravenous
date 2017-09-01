@@ -3,7 +3,7 @@ const secret = '8k7O9lJ0pfliwCvPoo9SGQscHbsEqwTYysnq6fKpfu9cdEn1FSVLGSXDlosraz45
 
 let accessToken;
 
-let Yelp = {
+const Yelp = {
 
   getAccessToken()
   {
@@ -42,7 +42,7 @@ let Yelp = {
   return response.json();
 }).then(jsonResponse => {
       if (jsonResponse.businesses) {
-        return jsonResponse.businesses.map(business => {
+        return jsonResponse.businesses.map(business => ({
           id: business.id,
           imageSrc: business.image_url,
           name: business.name,
